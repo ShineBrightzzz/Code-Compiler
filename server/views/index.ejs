@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Compiler</title>
+</head>
+<body>
+    <form id="compileForm">
+        <textarea id="code" name="code" cols="30" rows="10" placeholder="Enter your C++ code here"></textarea>
+        <br>
+        <button type="submit" id="btn">Compile</button>
+    </form>
+    <br>
+    <h3>Compilation Result:</h3>
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById('compileForm').addEventListener('submit', async function (e) {
+            e.preventDefault();  // Prevent the default form submission
+
+            const code = document.getElementById('code').value;
+
+            // Send the form data using fetch API
+            const response = await fetch('/compile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code }) // Send the code as JSON
+            });
+
+            const result = await response.text(); // Get the result back as plain text
+            document.getElementById('result').textContent = result; // Show the result in the pre tag
+        });
+    </script>
+</body>
+</html>

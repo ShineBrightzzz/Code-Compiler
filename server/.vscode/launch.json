@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch C++ Program",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "E:/GitRepo/Code Compiler/program.exe", // Replace with the actual path of your executable
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb", // or "lldb" depending on the debugger you're using
+            "miDebuggerPath": "/usr/bin/gdb", // Path to gdb debugger (for Linux) or the equivalent for Windows
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
